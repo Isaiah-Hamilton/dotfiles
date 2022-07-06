@@ -1,4 +1,3 @@
-set number
 set nocompatible
 filetype off
 
@@ -11,3 +10,9 @@ call plug#end()
 
 colorscheme gruvbox
 map <silent> <C-n> :NERDTreeFocus<CR>
+
+syntax on
+set colorcolumn=80
+set background=dark
+set number
+set hlsearch
