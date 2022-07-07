@@ -16,3 +16,4 @@ set colorcolumn=80
 set background=dark
 set number
 set hlsearch
+set spell spelllang=en_us
