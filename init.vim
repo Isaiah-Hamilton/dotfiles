@@ -4,6 +4,7 @@ filetype off
 set number
 set ruler
 syntax on
+set mouse=nicr
 
 " --- Encoding ---
 set encoding=utf-8
@@ -46,6 +47,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " --- Color Scheme ---
@@ -56,4 +58,14 @@ map <silent> <C-n> :NERDTreeFocus<CR>
 let NERDTreeIgnore=['.DS_Store', 'node_modules']
 let NERDTreeHighlightCursorline=1
 let NERDTreeShowLineNumbers=0
-let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI=1 
+
+" --- Gitgutter config ---
+set updatetime=100
+set signcolumn=no
+let g:gitgutter_signs=0
+let g:gitgutter_highlight_linenrs=1
+highlight GitGutterAddLineNr ctermfg=Green
+highlight GitGutterChangeLineNr ctermfg=Yellow
+highlight GitGutterDeleteLineNr ctermfg=Red
+highlight GitGutterChangeDeleteLineNr ctermfg=Red

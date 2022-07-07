@@ -19,3 +19,6 @@ tags
 [._]*.un~
 
 plugged/*
+
+# MacOS
+.DS_Store
