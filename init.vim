@@ -52,7 +52,6 @@ call plug#end()
 colorscheme gruvbox
 
 " --- NERDTree config ---
-
 map <silent> <C-n> :NERDTreeFocus<CR>
 let NERDTreeIgnore=['.DS_Store', 'node_modules']
 let NERDTreeHighlightCursorline=1
