@@ -15,9 +15,9 @@ set spell spelllang=en_us
 " --- Whitespace ---
 set autoindent smartindent
 set wrap
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 " --- Search ---
@@ -50,6 +50,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+Plug 'github/copilot.vim'
 call plug#end()
 
 " --- Color Scheme ---
@@ -71,3 +72,12 @@ highlight GitGutterAddLineNr ctermfg=Green
 highlight GitGutterChangeLineNr ctermfg=Yellow
 highlight GitGutterDeleteLineNr ctermfg=Red
 highlight GitGutterChangeDeleteLineNr ctermfg=Red
+
+" --- Barbar.nvim Config ---
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.animation = v:true
+let bufferline.no_name_title = 'untitled'
+
+" --- Move to previous/next ---
+nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
