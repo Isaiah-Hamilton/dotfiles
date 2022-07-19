@@ -55,6 +55,8 @@ call plug#end()
 
 " --- Color Scheme ---
 colorscheme gruvbox
+let g:gruvbox_termcolors=256
+let g:gruvbox_contrast='hard'
 
 " --- NERDTree config ---
 map <silent> <C-n> :NERDTreeFocus<CR>
