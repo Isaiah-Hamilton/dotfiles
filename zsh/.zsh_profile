@@ -1,0 +1,21 @@
+# vim
+alias vi="nvim"
+alias vim="nvim"
+export EDITOR="nvim"
+
+# docker
+alias d="docker"
+alias dc="docker-compose"
+
+# kill
+alias ka="killall"
+alias k9='kill -9'
+
+# ls
+alias lsa='ls -a'
+
+# python
+alias python='python3'
+
+# homebrew path
+eval "$(/opt/homebrew/bin/brew shellenv)"
