@@ -15,6 +15,9 @@ vnoremap = map("v")
 xnoremap = map("x")
 inoremap = map("i")
 
+-- set leader key <space>
+vim.g.mapleader = " "
+
 -- remap Esc
 inoremap("jj", "<Esc>")
 inoremap("jk", "<Esc>")
