@@ -6,7 +6,7 @@
 -- ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║
 -- ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
 --
--- isaiah's neovim configuration
+-- Isaiah's neovim configuration
 -- https://github.com/isaiah-hamilton
 
 require("mappings")
