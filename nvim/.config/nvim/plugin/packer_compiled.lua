@@ -79,10 +79,10 @@ _G.packer_plugins = {
     path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
     url = "https://github.com/glepnir/dashboard-nvim"
   },
-  gruvbox = {
+  ["gruvbox-material"] = {
     loaded = true,
-    path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/morhetz/gruvbox"
+    path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
   },
   ["lualine.nvim"] = {
     loaded = true,

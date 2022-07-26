@@ -22,7 +22,12 @@ vim.opt.expandtab = true
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
-vim.opt.wrap = true
+vim.opt.wrap = false
+
+-- backups
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
 
 -- search
 vim.opt.hlsearch = true
@@ -32,10 +37,15 @@ vim.opt.ignorecase = true
 
 -- scrolling
 vim.opt.mouse = 'a'
+vim.opt.scrolloff = 8
 
 -- appearance
+vim.opt.termguicolors = true
 vim.opt.laststatus = 2
-vim.opt.showmode = true
+vim.opt.showmode = false
 vim.opt.showmatch = true
 vim.opt.showcmd = true
 vim.opt.colorcolumn = "80"
+
+-- updatetime
+vim.opt.updatetime = 50

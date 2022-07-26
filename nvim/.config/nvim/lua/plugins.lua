@@ -3,7 +3,8 @@ return require("packer").startup(function()
   use "wbthomason/packer.nvim"
 
   -- colorscheme
-  use "morhetz/gruvbox"
+  -- use 'tanvirtin/monokai.nvim'
+  use 'sainnhe/gruvbox-material'
 
   -- icons
   use "kyazdani42/nvim-web-devicons"
