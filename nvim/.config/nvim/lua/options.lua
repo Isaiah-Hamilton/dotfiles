@@ -36,7 +36,7 @@ vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
 -- scrolling
-vim.opt.mouse = 'a'
+vim.opt.mouse = "ncr"
 vim.opt.scrolloff = 8
 
 -- appearance
@@ -47,5 +47,5 @@ vim.opt.showmatch = true
 vim.opt.showcmd = true
 vim.opt.colorcolumn = "80"
 
--- updatetime
+-- updatetime (ms)
 vim.opt.updatetime = 50

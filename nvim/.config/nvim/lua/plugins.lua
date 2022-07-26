@@ -3,8 +3,8 @@ return require("packer").startup(function()
   use "wbthomason/packer.nvim"
 
   -- colorscheme
-  -- use 'tanvirtin/monokai.nvim'
-  use 'sainnhe/gruvbox-material'
+  -- use "tanvirtin/monokai.nvim"
+  use "sainnhe/gruvbox-material"
 
   -- icons
   use "kyazdani42/nvim-web-devicons"
@@ -13,7 +13,7 @@ return require("packer").startup(function()
   use "glepnir/dashboard-nvim"
 
   -- status line
-  use {"nvim-lualine/lualine.nvim"}
+  use "nvim-lualine/lualine.nvim"
 
   -- file tree
   use "kyazdani42/nvim-tree.lua"

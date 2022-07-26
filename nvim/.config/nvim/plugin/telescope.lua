@@ -25,11 +25,11 @@ nnoremap = map("n")
 nnoremap("<C-f>", ":Telescope")
 
 nnoremap("<leader>fs", function()
-  require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})
+  require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ")})
 end)
 
 nnoremap("<Leader>ff", function()
-  require('telescope.builtin').find_files()
+  require("telescope.builtin").find_files()
 end)
 
 nnoremap("<Leader>fo", function()
