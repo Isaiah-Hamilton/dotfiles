@@ -3,7 +3,7 @@
 ## Information
 
 Here are some details about my setup:
-- OS: [macOS](https://www.apple.com/macos/monterey/) / [Arch Linux](https://archlinux.org/)
+- OS: [macOS](https://www.apple.com/macos/monterey/) / [EndeavourOS](https://endeavouros.com/)
 - Terminal: [iTerm2](https://github.com/gnachman/iTerm2)
 - Shell: [zsh](https://www.zsh.org/)
 - Editor: [neovim](https://github.com/neovim/neovim)
