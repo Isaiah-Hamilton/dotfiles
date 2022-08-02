@@ -1,7 +1,6 @@
 require("nvim-tree").setup({
-  open_on_setup = true,
   view = {
-    adaptive_size = true,
+    width = 30,
     hide_root_folder = true,
   },
   renderer = {

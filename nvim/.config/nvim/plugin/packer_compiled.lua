@@ -82,7 +82,7 @@ _G.packer_plugins = {
   ["gruvbox-material"] = {
     loaded = true,
     path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/gruvbox-material",
-    url = "https://github.com/sainnhe/gruvbox-material"
+    url = "/Users/isaiah/.config/nvim/colors/gruvbox-material"
   },
   ["lualine.nvim"] = {
     loaded = true,

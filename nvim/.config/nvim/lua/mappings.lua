@@ -21,6 +21,7 @@ vim.g.mapleader = " "
 -- remap Esc
 inoremap("jj", "<Esc>")
 inoremap("jk", "<Esc>")
+inoremap("kk", "<Esc>")
 
 -- navigate within insert mode
 inoremap("<C-h>", "<Left>")
@@ -35,7 +36,10 @@ nnoremap("<C-j>", "<C-w>j")
 nnoremap("<C-k>", "<C-w>k")
 
 -- save file
-nnoremap("<C-s>", "<cmd> w <CR>")
+nnoremap("<C-s>", "<cmd>w<CR>")
 
 -- undo action
 nnoremap("<C-z>", "u")
+
+-- nvim-tree
+nnoremap("<leader>tt", "<cmd>NvimTreeFocus<CR>")

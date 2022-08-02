@@ -32,11 +32,10 @@ vim.opt.undofile = true
 -- search
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
-vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
 -- scrolling
-vim.opt.mouse = "ncr"
+vim.opt.mouse = "a"
 vim.opt.scrolloff = 8
 
 -- appearance
@@ -48,4 +47,4 @@ vim.opt.showcmd = true
 vim.opt.colorcolumn = "80"
 
 -- updatetime (ms)
-vim.opt.updatetime = 50
+vim.opt.updatetime = 100
