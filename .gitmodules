@@ -1,0 +1,3 @@
+[submodule "supabase-dotfiles"]
+	path = supabase-dotfiles
+	url = https://github.com/Isaiah-Hamilton/supabase-dotfiles.git
