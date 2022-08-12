@@ -12,7 +12,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.encoding = "utf-8"
 
 -- spell checker
-vim.opt.spell = true
+-- vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 
 -- indenting

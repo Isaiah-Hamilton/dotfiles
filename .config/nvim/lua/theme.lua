@@ -1,3 +1,3 @@
 -- require('onedark').setup()
-vim.cmd[[colorscheme gruvbox-material]]
+vim.cmd[[colorscheme tokyonight]]
 vim.opt.background = "dark"

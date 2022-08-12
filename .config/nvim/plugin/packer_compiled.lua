@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
     url = "https://github.com/glepnir/dashboard-nvim"
   },
-  ["gruvbox-material"] = {
-    loaded = true,
-    path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/gruvbox-material",
-    url = "/Users/isaiah/.config/nvim/colors/gruvbox-material"
-  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -105,6 +100,11 @@ _G.packer_plugins = {
     path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-ts-autotag"] = {
+    loaded = true,
+    path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -124,6 +124,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/isaiah/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   }
 }
 

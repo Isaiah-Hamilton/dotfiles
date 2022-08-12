@@ -1,8 +1,8 @@
-local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer. nvin"
+local status, packer = pcall(require, "packer")
 
--- install packer if not already installed
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.execute ("!git clone https://github.com/wbthomason/packer.nvim" .. install_path)
+if (not status) then
+  print("Packer is not installed")
+  return
 end
 
 return require("packer").startup(function()
@@ -10,10 +10,13 @@ return require("packer").startup(function()
   use "wbthomason/packer.nvim"
 
   -- colorscheme
-  use "Isaiah-Hamilton/gruvbox-material"
-  -- use "ful1e5/onedark.nvim"
+  use 'folke/tokyonight.nvim'
+  -- use "Isaiah-Hamilton/gruvbox-material"
   -- use "ellisonleao/gruvbox.nvim"
+  -- use "arcticicestudio/nord-vim"
+  -- use "ful1e5/onedark.nvim"
 
+  use "windwp/nvim-ts-autotag"
   use "kyazdani42/nvim-web-devicons" -- icons
   use "glepnir/dashboard-nvim" -- dashboard
   use "nvim-lualine/lualine.nvim" -- status line
