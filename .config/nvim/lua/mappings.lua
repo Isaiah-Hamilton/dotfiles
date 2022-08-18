@@ -21,7 +21,6 @@ vim.g.mapleader = " "
 -- remap Esc
 inoremap("jj", "<Esc>")
 inoremap("jk", "<Esc>")
-inoremap("kk", "<Esc>")
 
 -- navigate within insert mode
 inoremap("<C-h>", "<Left>")
