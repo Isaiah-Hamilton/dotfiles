@@ -1,50 +1,47 @@
+local opt = vim.opt
+
 vim.cmd[[set nocompatible]]
 
--- number line
-vim.opt.number = true
-vim.opt.numberwidth = 2
-vim.opt.ruler = true
+opt.showmode = false
+opt.showcmd = true
+opt.cmdheight = 1 -- Height of the command bar
+opt.termguicolors = true -- Use terminal colors
+opt.colorcolumn = "80" -- That Grey colored column thing
+opt.incsearch = true -- Makes search act like search in modern browsers
+opt.showmatch = true -- Show matching brackets when text indicator is over them
+opt.number = true -- Show line numbers
+opt.numberwidth = 2 -- width of numberline
+opt.ruler = true -- Not sure what this does
+opt.ignorecase = true -- Ignore case when searching...
+opt.smartcase = true -- ... unless there is a capital letter in the query
+opt.splitright = true -- Prefer windows splitting to the right
+opt.splitbelow = true -- Prefer windows splitting to the bottom
+opt.updatetime = 100 -- Make updates happen ever 100ms
+opt.hlsearch = true -- Search for words in current file
+opt.scrolloff = 10 -- Make it so there are always 10 lines below my cursor
+opt.clipboard = "unnamedplus" -- Use system clipboard
+opt.mouse = "a" -- Make it so I can scroll
+opt.encoding = "utf-8" -- Encoding
+opt.spell = true -- Spell checker
+opt.spelllang = "en_us" -- Spell lang
 
--- use system clipboard
-vim.opt.clipboard = "unnamedplus"
+-- Tabs
+opt.autoindent = true
+opt.cindent = true
+opt.wrap = true
 
--- encoding
-vim.opt.encoding = "utf-8"
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
+opt.expandtab = true
 
--- spell checker
--- vim.opt.spell = true
-vim.opt.spelllang = "en_us"
+opt.breakindent = true
+opt.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smart
+opt.linebreak = true
 
--- indenting
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.expandtab = true
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.wrap = false
+opt.belloff = "all" -- Turn off the bell
 
 -- backups
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undofile = true
-
--- search
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-vim.opt.ignorecase = true
-
--- scrolling
-vim.opt.mouse = "a"
-vim.opt.scrolloff = 8
-
--- appearance
-vim.opt.termguicolors = true
-vim.opt.laststatus = 2
-vim.opt.showmode = false
-vim.opt.showmatch = true
-vim.opt.showcmd = true
-vim.opt.colorcolumn = "80"
-
--- updatetime (ms)
-vim.opt.updatetime = 100
+opt.swapfile = false
+opt.backup = false
+opt.undofile = true
