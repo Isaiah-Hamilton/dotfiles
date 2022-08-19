@@ -10,11 +10,21 @@ return require("packer").startup(function()
   use "wbthomason/packer.nvim"
 
   -- colorscheme
-  use 'folke/tokyonight.nvim'
-  -- use "Isaiah-Hamilton/gruvbox-material"
+  -- use 'folke/tokyonight.nvim'
+  use "Isaiah-Hamilton/gruvbox-material"
   -- use "ellisonleao/gruvbox.nvim"
   -- use "arcticicestudio/nord-vim"
   -- use "ful1e5/onedark.nvim"
+
+  -- completion
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-nvim-lua"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "neovim/nvim-lspconfig"
+  use "hrsh7th/cmp-cmdline"
+  use "onsails/lspkind.nvim"
 
   use "windwp/nvim-ts-autotag"
   use "kyazdani42/nvim-web-devicons" -- icons
