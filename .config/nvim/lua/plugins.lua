@@ -11,10 +11,9 @@ return require("packer").startup(function()
 
   -- colorscheme
   -- use 'folke/tokyonight.nvim'
-  use "Isaiah-Hamilton/gruvbox-material"
-  -- use "ellisonleao/gruvbox.nvim"
+  use { "catppuccin/nvim", as = "catppuccin" }
+  -- use "Isaiah-Hamilton/gruvbox-material"
   -- use "arcticicestudio/nord-vim"
-  -- use "ful1e5/onedark.nvim"
 
   -- completion
   use "hrsh7th/nvim-cmp"
@@ -30,7 +29,7 @@ return require("packer").startup(function()
   use "kyazdani42/nvim-web-devicons" -- icons
   use "glepnir/dashboard-nvim" -- dashboard
   use "nvim-lualine/lualine.nvim" -- status line
-  use "kyazdani42/nvim-tree.lua" -- file tre
+  use "kyazdani42/nvim-tree.lua" -- file tree
   use {"akinsho/bufferline.nvim", tag = "v2.*"} -- tabs
   use {"windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end} -- auto close brackets
   use {"nvim-telescope/telescope.nvim", tag = "0.1.0", requires = {{ "nvim-lua/plenary.nvim" }}} -- fuzzy finder

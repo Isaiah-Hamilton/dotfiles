@@ -6,6 +6,7 @@ opt.showmode = false
 opt.showcmd = true
 opt.cmdheight = 1 -- Height of the command bar
 opt.termguicolors = true -- Use terminal colors
+opt.cursorline = true -- cursor line
 opt.colorcolumn = "80" -- That Grey colored column thing
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- Show matching brackets when text indicator is over them

@@ -1,3 +1,5 @@
-vim.cmd[[colorscheme gruvbox-material]]
-vim.opt.background = "dark"
-vim.g.tokyonight_style = "night"
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+
+require("catppuccin").setup()
+
+vim.cmd [[colorscheme catppuccin]]

@@ -98,3 +98,8 @@ require'lspconfig'.tsserver.setup {
 require'lspconfig'.tailwindcss.setup{
   capabilities = capabilities
 }
+
+-- rust
+require'lspconfig'.rust_analyzer.setup{
+  capabilities = capabilities
+}

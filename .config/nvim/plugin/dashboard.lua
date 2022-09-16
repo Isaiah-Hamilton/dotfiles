@@ -14,12 +14,6 @@ db.custom_header = {
 db.custom_center = {
   {
     icon = " ",
-    desc = "New File                                 ",
-    shortcut = "space n",
-    action = "enew",
-  },
-  {
-    icon = " ",
     desc = "Find File                               ",
     shortcut = "space ff",
     action = "Telescope find_files",
