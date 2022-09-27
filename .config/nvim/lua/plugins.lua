@@ -24,6 +24,7 @@ return require("packer").startup(function()
   use "neovim/nvim-lspconfig"
   use "hrsh7th/cmp-cmdline"
   use "onsails/lspkind.nvim"
+  use "saadparwaiz1/cmp_luasnip"
 
   use "windwp/nvim-ts-autotag"
   use "kyazdani42/nvim-web-devicons" -- icons

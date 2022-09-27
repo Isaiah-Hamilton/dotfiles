@@ -3,29 +3,30 @@ local cmp = require'cmp'
 
 cmp.setup({
   snippet = {
-    -- REQUIRED
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
 
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<C-y>'] = cmp.mapping.confirm({
+    ['<C-Space'] = cmp.mapping.complete(),
+    ['<C-y'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     }),
-    ['<Tab>'] = function(fallback)
+
+    ["<Tab>"] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       else
         fallback()
       end
     end,
-    ['<S-Tab>'] = function(fallback)
+
+    ["<S-Tab>"] = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       else
@@ -38,8 +39,8 @@ cmp.setup({
     { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
     { name = 'path' },
+    { name = "luasnip" },
     { name = 'buffer', keyword_length = 4 },
-    { name = 'vsnip' },
   }),
 
   formatting = ({
@@ -49,6 +50,7 @@ cmp.setup({
         buffer = "[Buf]",
         nvim_lsp = "[LSP]",
         nvim_lua = "[api]",
+        luasnip = "[snip]",
         path = "[path]",
       },
     },
