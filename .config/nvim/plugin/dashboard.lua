@@ -9,20 +9,28 @@ db.custom_header = {
   "██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║",
   "╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝",
   "",
+  "[ TIP: To exit Neovim, just power off your computer. ]",
+  "",
 }
 
 db.custom_center = {
   {
     icon = " ",
     desc = "Find File                               ",
-    shortcut = "space ff",
+    shortcut = "SPC ff",
     action = "Telescope find_files",
   },
   {
     icon = " ",
     desc = "Find History                            ",
-    shortcut = "space fo",
+    shortcut = "SPC fo",
     action = "Telescope oldfiles",
+  },
+  {
+    icon = " ",
+    desc = "File Tree                               ",
+    shortcut = "SPC tt",
+    action = "NvimTreeFocus",
   }
 }
 
