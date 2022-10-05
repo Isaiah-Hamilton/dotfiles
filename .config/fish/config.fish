@@ -1,7 +1,15 @@
 if status is-interactive
-    # Set PATH for Homebrew
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+  # vim
+  alias vi="nvim"
+  alias vim="nvim"
 
-    # Setup starship
-    starship init fish | source
+  # python
+  alias python="python3"
+  alias pip="pip3"
+
+  # Set PATH for Homebrew
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+  # Setup starship
+  starship init fish | source
 end
