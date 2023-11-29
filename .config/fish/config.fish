@@ -13,5 +13,5 @@ if status is-interactive
 	alias ls exa
 
 	# git
-	alias git lazygit
+	alias lg lazygit
 end
