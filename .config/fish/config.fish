@@ -1,15 +1,17 @@
 if status is-interactive
-  # vim
-  alias vi="nvim"
-  alias vim="nvim"
+	# Set PATH for Homebrew
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 
-  # python
-  alias python="python3"
-  alias pip="pip3"
+	# Setup starship
+	starship init fish | source
 
-  # Set PATH for Homebrew
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+	# vim
+	alias vi nvim
+	alias vim nvim
 
-  # Setup starship
-  starship init fish | source
+	# ls
+	alias ls exa
+
+	# git
+	alias git lazygit
 end
