@@ -1,23 +1,18 @@
 shell:
   program: /opt/homebrew/bin/fish
-
+env:
+  TERM: xterm-256color
 font:
-  # Normal font face
+  size: 12
   normal:
-    family: Hack Nerd Font Mono
+    family: "MonaspiceAr Nerd Font Mono"
     style: Regular
-
-  # Bold font face
   bold:
-    family: Hack Nerd Font Mono
+    family: "MonaspiceAr Nerd Font Mono"
     style: Bold
-
-  # Italic font face
   italic:
-    family: Hack Nerd Font Mono
+    family: "MonaspiceAr Nerd Font Mono"
     style: Italic
-
-  # Bold italic font face
   bold_italic:
-    family: Hack Nerd Font Mono
+    family: "MonaspiceAr Nerd Font Mono"
     style: Bold Italic

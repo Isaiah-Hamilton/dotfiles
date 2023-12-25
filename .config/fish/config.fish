@@ -1,17 +1,25 @@
-if status is-interactive
-	# Set PATH for Homebrew
-	eval "$(/opt/homebrew/bin/brew shellenv)"
+# Remove welcome to fish message
+set fish_greeting
 
-	# Setup starship
-	starship init fish | source
+# Set PATH for Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-	# vim
-	alias vi nvim
-	alias vim nvim
+# Setup starship
+starship init fish | source
 
-	# ls
-	alias ls exa
+# vim
+alias vi nvim
+alias vim nvim
 
-	# git
-	alias lg lazygit
-end
+# ls
+alias ls exa
+
+# git
+alias lg lazygit
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+# Run neofetch on new shell
+neofetch
