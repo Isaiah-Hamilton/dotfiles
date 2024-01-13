@@ -12,7 +12,6 @@ yabai -m config right_padding 10
 yabai -m config window_gap 10
 
 # -- Mouse settings --
-yabai -m config mouse_follows_focus on  # Moves mouse to fouced window
 yabai -m config mouse_modifier ctrl     # Set mouse modifier ("cmd", "alt", "shift", "ctrl" or "fn")
 yabai -m config mouse_action1 move      # Left click + drag = moves window
 yabai -m config mouse_action2 resize    # Right click + drag = resize window
