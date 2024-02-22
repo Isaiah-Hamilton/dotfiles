@@ -4,6 +4,9 @@ set fish_greeting
 # Set PATH for Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Set PATH for Rust
+set -x PATH $PATH "$HOME/.cargo/bin"
+
 # Setup starship
 starship init fish | source
 
@@ -12,7 +15,8 @@ alias vi nvim
 alias vim nvim
 
 # ls
-alias ls exa
+alias ls "exa -1 --icons --git-ignore"
+alias lsa "exa -a -1 --icons --git-ignore"
 
 # git
 alias lg lazygit
@@ -23,3 +27,6 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # Run neofetch on new shell
 neofetch
+
+# Setup zoxide
+zoxide init --cmd cd fish | source
