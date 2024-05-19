@@ -1,0 +1,6 @@
+\.git
+\.gitignore
+^/README.*
+^/LICENSE.*
+\.DS_Store
+\.stow-local-ignore
