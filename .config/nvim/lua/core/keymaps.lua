@@ -1,7 +1,7 @@
--- [[ Set <space> as leader key ]]
+-- [[ Set Space as leader key ]]
 vim.g.mapleader = " "
 
--- [[ Remap <ESC> key ]]
+-- [[ Remap ESC ]]
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("i", "kk", "<Esc>", { noremap = true, silent = true })
 

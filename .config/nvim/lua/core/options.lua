@@ -3,7 +3,6 @@ vim.o.termguicolors = true -- Use terminal colors
 vim.o.cmdheight = 0 -- Height of the command line (hide command line unless needed)
 vim.o.showmode = false -- Disable showing modes in command line
 vim.o.number = true -- Make line numbers default
-vim.o.relativenumber = true
 vim.o.numberwidth = 2 -- Width of numberline
 vim.o.cursorline = true -- Highlight the line of the cursor
 vim.o.signcolumn = "yes" -- Always show the sign column

@@ -10,16 +10,10 @@ return {
 			W = { ":w!<cr>", "Force Save File", noremap = true, silent = true },
       n = { ":enew<cr>", "New File", noremap = true, silent = true },
 
-      -- [[ Buffers ]]
-      b = {
-				name = "Buffers",
-				c = { function(n) require("mini.bufremove").delete(n, false) if vim.fn.bufexists(n) == 0 then require("alpha").start(true) end end, "Close Buffer" }
-			},
-
       -- [[ Neo Tree ]]
-      e = {
+      t = {
         name = "Neo Tree",
-        e = { ":Neotree toggle<cr>", "Neo Tree Toggle", noremap = true, silent = true },
+        t = { ":Neotree toggle<cr>", "Neo Tree Toggle", noremap = true, silent = true },
         f = { ":Neotree focus<cr>", "Neo Tree Focus", noremap = true, silent = true }
       },
 

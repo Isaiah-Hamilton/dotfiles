@@ -3,7 +3,7 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      theme = "gruvbox-material",
+      theme = "sonokai",
       component_separators = "|",
       section_separators = "",
       disabled_filetypes = {
