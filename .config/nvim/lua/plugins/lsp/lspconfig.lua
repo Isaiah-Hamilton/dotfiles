@@ -16,5 +16,10 @@ return {
     lspconfig.tsserver.setup({
       capabilities = capabilities
     })
+
+    -- rust
+    lspconfig.rust_analyzer.setup({
+      capabilities = capabilities
+    })
   end
 }

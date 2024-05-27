@@ -10,7 +10,8 @@ return {
         "lua_ls", -- lua
         "rust_analyzer", -- rust
         "clangd", -- c/c++
-        "tailwindcss-language-server" -- tailwind
+        "tsserver", -- javascript/typescript
+        -- "tailwindcss-language-server" -- tailwind
       },
       automatic_installation = true
     }
