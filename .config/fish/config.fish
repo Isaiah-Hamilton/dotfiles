@@ -25,8 +25,8 @@ alias lg lazygit
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
-# Run neofetch on new shell
-neofetch
+# Run fastfetch on new shell
+fastfetch
 
 # Setup zoxide
 zoxide init --cmd cd fish | source
