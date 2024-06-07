@@ -21,5 +21,10 @@ return {
     lspconfig.rust_analyzer.setup({
       capabilities = capabilities
     })
+
+    -- go
+    lspconfig.gopls.setup({
+      capabilities = capabilities
+    })
   end
 }
