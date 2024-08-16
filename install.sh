@@ -214,7 +214,7 @@ if [ ${#errorPackages[@]} -gt 0 ]; then
   for errorPackage in "${errorPackages[@]}"; do
     echo "$errorPackage"
   done
-else
+elif [[ $response =~ (y|yes|Y) ]]; then
   echo "All packages installed successfully."
 fi
 
@@ -242,7 +242,7 @@ if [ ${#errorApps[@]} -gt 0 ]; then
   for errorApp in "${errorApps[@]}"; do
     echo "$errorApp"
   done
-else
+elif [[ $response =~ (y|yes|Y) ]]; then
   echo "All apps installed successfully."
 fi
 
@@ -475,7 +475,7 @@ brew update && brew upgrade && brew cleanup
 
 bot "All done!"
 
-bot "Would you like to reboot your system? [y|n] "
+echo -n "Would you like to reboot your system? [y|n] "
 read -r response
 if [[ $response =~ ^(y|yes|Y) ]]; then
   reboot
