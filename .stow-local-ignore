@@ -4,3 +4,4 @@
 ^/LICENSE.*
 \.DS_Store
 \.stow-local-ignore
+\.config/raycast/
