@@ -464,6 +464,7 @@ ok
 # 1: Very often (1 sec)
 # 2: Often (2 sec)
 # 5: Normally (5 sec)
+
 running "Update refresh frequency in activity monitor"
 sudo defaults write com.apple.ActivityMonitor UpdatePeriod -int 2
 ok
