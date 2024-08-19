@@ -48,94 +48,9 @@ function print_result() {
   return "$1"
 }
 
-# Function to clean up background process
-function cleanup() {
-  bot "Cleaning up..."
-  kill $keep_sudo_alive_pid &> /dev/null
-  exit
-}
-
-# Trap signals and call cleanup function
-trap cleanup SIGINT SIGTERM
-
 bot "Hi! I'm going to install tooling and tweak your system settings. Here I go..."
 
-# Check for sudo permissions
-if ! sudo -n true 2>/dev/null; then
-  bot "But first, I need sudo permissions"
-
-  # Request sudo permission
-  sudo -v
-fi
-
-
-
-# Keep the sudo session alive by refreshing the timestamp every minute
-# This runs in the background
-while true; do
-  sudo -v
-  sleep 60
-done &
-
-# Store the PID of the background process
-keep_sudo_alive_pid=$!
-
-# Git Config
-bot "Updating the .gitconfig with your user info:"
-
-echo -n "what is your git username? "
-read -r githubuser
-
-fullname=`osascript -e "long user name of (system info)"`
-
-if [[ -n "$fullname" ]]; then
-  lastname=$(echo $fullname | awk '{print $2}');
-  firstname=$(echo $fullname | awk '{print $1}');
-else
-  echo -n "what is your first name? "
-  read -r firstname
-  echo "what is your last name? "
-  read -r lastname
-fi
-
-echo -e "I see that your full name is $COL_YELLOW$firstname $lastname$COL_RESET"
-echo -n "Is this correct? [y|n] "
-read -r response
-
-if [[ $response =~ ^(no|n|N) ]]; then
-  echo -n "what is your first name? "
-  read -r firstname
-  echo -n "what is your last name? "
-  read -r lastname
-fi
-
-fullname="$firstname $lastname"
-
-bot "Great $fullname,"
-
-echo -n "what is your email? "
-read -r email
-
-if [[ ! $email ]];then
-  error "you must provide an email to configure .gitconfig"
-  exit 1
-fi
-
-running "populating .gitconfig with your info ($COL_YELLOW$fullname, $email, $githubuser$COL_RESET)"
-
-# Check if the sed command supports the -i option without an extra argument
-if sed -i '' "s/GITHUBFULLNAME/$firstname $lastname/" ./.gitconfig > /dev/null 2>&1; then
-  sed -i '' "s/GITHUBFULLNAME/$firstname $lastname/" ./.gitconfig
-  sed -i '' 's/GITHUBEMAIL/'$email'/' ./.gitconfig
-  sed -i '' 's/GITHUBUSER/'$githubuser'/' ./.gitconfig
-  ok
-else
-  sed -i 's/GITHUBEMAIL/'$email'/' ./.gitconfig
-  sed -i 's/GITHUBUSER/'$githubuser'/' ./.gitconfig
-  ok
-fi
-
-Install non-brew various tools (PRE-BREW Installs)
+# Install non-brew various tools (PRE-BREW Installs)
 running "checking XCode Command Line Tools"
 if ! xcode-select --print-path &> /dev/null; then
   action "installing XCode Command Line Tools"
@@ -148,13 +63,12 @@ if ! xcode-select --print-path &> /dev/null; then
     sleep 5
   done
 
-  print_result $? "XCode Command Line Tools Installed"
+  print_result $? "xcode command line tools installed"
 
   # Prompt user to agree to the terms of the Xcode license
   # https://github.com/alrra/dotfiles/issues/10
-
   sudo xcodebuild -license
-  print_result $? "Agreed to the XCode Command Line Tools licence"
+  print_result $? "agreed to the xcode command line tools licence"
 else
   ok
 fi
@@ -178,19 +92,19 @@ if [[ $? != 0 ]]; then
 else
   ok
   bot "Homebrew"
-  echo -n "run brew update && upgrade? [y|n] "
+  echo -n "run brew update && upgrade? [y|n]: "
   read -r response
   if [[ $response =~ (y|yes|Y) ]]; then
     brew update
-    ok "homebrew updated"
+    print_result $? "homebrew updated"
     brew upgrade
-    ok "brews upgraded"
+    print_result $? "brews upgraded"
   else
-    ok "skipped brew package upgrades."
+    print_result $? "skipped brew package upgrades."
   fi
 fi
 
-echo -n "would you like to install packages with brew? [y|n] "
+echo -n "would you like to install packages with brew? [y|n]: "
 read -r response
 if [[ $response =~ (y|yes|Y) ]]; then
   brew install gum &> /dev/null
@@ -210,15 +124,15 @@ if [[ $response =~ (y|yes|Y) ]]; then
 fi
 
 if [ ${#errorPackages[@]} -gt 0 ]; then
-  echo "The following packages failed to install:"
+  echo "the following packages failed to install:"
   for errorPackage in "${errorPackages[@]}"; do
     echo "$errorPackage"
   done
 elif [[ $response =~ (y|yes|Y) ]]; then
-  echo "All packages installed successfully."
+  echo "all packages installed successfully."
 fi
 
-echo -n "would you like to install apps with brew? [y|n] "
+echo -n "install apps? [y|n]: "
 read -r response
 if [[ $response =~ (y|yes|Y) ]]; then
   brew install gum &> /dev/null
@@ -238,20 +152,50 @@ if [[ $response =~ (y|yes|Y) ]]; then
 fi
 
 if [ ${#errorApps[@]} -gt 0 ]; then
-  echo "The following apps failed to install:"
+  echo "the following apps failed to install:"
   for errorApp in "${errorApps[@]}"; do
     echo "$errorApp"
   done
 elif [[ $response =~ (y|yes|Y) ]]; then
-  echo "All apps installed successfully."
+  echo "all apps installed successfully."
 fi
+
+echo -n "install fonts? [y|n]: "
+read -r response
+if [[ $response =~ (y|yes|Y) ]]; then
+  brew install gum &> /dev/null
+  fonts=($(cat ./install/fonts.txt |gum choose --no-limit --header="Fonts:"))
+
+  for font in "${fonts[@]}"; do
+    running "brew install --cask $font"
+    brew install --cask "$font" &> /dev/null
+
+    if brew list --cask "$font" &> /dev/null; then
+      ok
+    else
+      error
+      errorFonts+=("$font")
+    fi
+  done
+fi
+
+if [ ${#errorFonts[@]} -gt 0 ]; then
+  echo "the following fonts failed to install:"
+  for errorFonts in "${errorFonts[@]}"; do
+    echo "$errorFonts"
+  done
+elif [[ $response =~ (y|yes|Y) ]]; then
+  echo "all fonts installed successfully."
+fi
+
+echo
 
 # Just to avoid a potential bug
 mkdir -p ~/Library/Caches/Homebrew/Formula
 brew doctor
 
 bot "Dotfiles Setup"
-echo -n "would you like to link ./dotfiles/* to ~/ with GNU stow?  [y|n] "
+echo -n "would you like to link ./dotfiles/* to ~/ with GNU stow?  [y|n]: "
 read -r response
 if [[ $response =~ (y|yes|Y) ]]; then
   running "installing GNU stow"
@@ -263,19 +207,10 @@ if [[ $response =~ (y|yes|Y) ]]; then
   ok
 fi
 
-echo -n "install fonts? [y|n] "
-read -r response
-if [[ $response =~ (y|yes|Y) ]]; then
-  running "installing fonts"
-  # TODO:
-  ok
-fi
-
 # OS Configuration
 
 bot "OS configuration"
-bot "source: " # TODO:
-echo -n "do you want to update the system configurations? [y|n] "
+echo -n "do you want to update the system configurations? [y|n]: "
 read -r response
 if [[ -z $response || $response =~ ^(n|no|N) ]]; then
   open /Applications/WezTerm.app
@@ -384,10 +319,6 @@ running "save screenshots in PNG format" # (other options: BMP, GIF, JPG, PDF, T
 sudo defaults write com.apple.screencapture type -string "png"
 ok
 
-# TEST:
-# running "Enable subpixel font rendering on non-Apple LCDs"
-# defaults write NSGlobalDomain AppleFontSmoothing -int 2;ok
-
 running "keep folders on top when sorting by name" # (version 10.12 and later)
 sudo defaults write com.apple.finder _FXSortFoldersFirst -bool true
 ok
@@ -465,20 +396,22 @@ ok
 # 2: Often (2 sec)
 # 5: Normally (5 sec)
 
-running "Update refresh frequency in activity monitor"
+running "update refresh frequency in activity monitor"
 sudo defaults write com.apple.ActivityMonitor UpdatePeriod -int 2
 ok
 
-bot "Note that some of these changes require a logout/restart to take effect."
-
-brew update && brew upgrade && brew cleanup
+running "update and cleanup homebrew"
+brew update &> /dev/null
+brew upgrade &> /dev/null
+brew cleanup &> /dev/null
+ok
 
 bot "All done!"
 
-echo -n "Would you like to reboot your system? [y|n] "
+bot "Note that some of these changes require a logout/restart to take effect."
+
+echo -n "Would you like to reboot your system? [y|n]: "
 read -r response
 if [[ $response =~ ^(y|yes|Y) ]]; then
   reboot
 fi
-
-cleanup

@@ -2,7 +2,6 @@
 alt-tab
 arc
 bartender
-font-monaspace-nerd-font
 iina
 mediamate
 middleclick
