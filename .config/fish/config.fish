@@ -15,8 +15,8 @@ alias vi nvim
 alias vim nvim
 
 # ls
-alias ls "eza -1 --icons --git-ignore"
-alias lsa "eza -a -1 --icons --git-ignore"
+alias ls "eza -1 --icons"
+alias lsa "eza -a -1 --icons"
 
 # git
 alias lg lazygit
