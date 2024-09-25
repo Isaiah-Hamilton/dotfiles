@@ -218,195 +218,11 @@ if [[ -z $response || $response =~ ^(n|no|N) ]]; then
   exit
 fi
 
-bot "Configuring General System UI/UX..."
-
-running "closing any system preferences to prevent issues with automated changes"
-osascript -e 'tell application "System Preferences" to quit'
-ok
-
-# Security
-
-# Based on:
-# https://github.com/drduh/macOS-Security-and-Privacy-Guide
-# https://benchmarks.cisecurity.org/tools2/osx/CIS_Apple_OSX_10.12_Benchmark_v1.0.0.pdf
-
-# Enable firewall. Possible values:
-#   0 = off
-#   1 = on for specific sevices
-#   2 = on for essential services
-running "enable firewall"
-sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
-ok
-
-# Source: https://support.apple.com/guide/mac-help/use-stealth-mode-to-keep-your-mac-more-secure-mh17133/mac
-running "enable firewall stealth mode" # (no response to ICMP / ping requests)
-sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -int 1
-ok
-
-running "disable password hints"
-sudo defaults write /Library/Preferences/com.apple.loginwindow RetriesUntilHint -int 0
-ok
-
-running "disable guest account login"
-sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
-ok
-
-running "disable the \“Are you sure you want to open this application?\” dialog"
-sudo defaults write com.apple.LaunchServices LSQuarantine -bool false
-ok
-
-running "hide hard drive icon on the desktop"
-sudo defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
-ok
-
-running "hide server icon on the desktop"
-sudo defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
-ok
-
-running "hide removable media on the desktop"
-sudo defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-sudo defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-ok
-
-running "disable the Launchpad gesture"
-sudo defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
-ok
-
-running "boot in verbose mode"
-sudo nvram boot-args="-v"
-ok
-
-running "disable the sound effects on boot"
-sudo nvram SystemAudioVolume=" "
-ok
-
-running "check for software updates daily"
-sudo defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-ok
-
-running "disable smart quotes"
-sudo defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-ok
-
-running "disable smart dashes as they’re annoying when typing code"
-sudo defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-ok
-
-running "enable tap to click"
-sudo defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-sudo defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-ok
-
-running "enable full keyboard access" # (e.g. enable Tab in modal dialogs)
-sudo defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-ok
-
-running "disable press-and-hold for keys"
-sudo defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-ok
-
-running "require password immediately after sleep or screen saver begins"
-sudo defaults write com.apple.screensaver askForPassword -int 1
-sudo defaults write com.apple.screensaver askForPasswordDelay -int 0
-ok
-
-running "save screenshots to the desktop"
-sudo defaults write com.apple.screencapture location -string "${HOME}/Desktop"
-ok
-
-running "save screenshots in PNG format" # (other options: BMP, GIF, JPG, PDF, TIFF)
-sudo defaults write com.apple.screencapture type -string "png"
-ok
-
-running "keep folders on top when sorting by name" # (version 10.12 and later)
-sudo defaults write com.apple.finder _FXSortFoldersFirst -bool true
-ok
-
-running "set Home as the default location for new Finder windows"
-# For other paths, use 'PfLo' and 'file:///full/path/here/'
-sudo defaults write com.apple.finder NewWindowTarget -string "PfLo"
-sudo defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
-ok
-
-running "show filename extensions"
-sudo defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-ok
-
-running "disable the warning when changing a file extension"
-sudo defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-ok
-
-running "disable the warning before emptying the trash"
-sduo defaults write com.apple.finder WarnOnEmptyTrash -bool false
-ok
-
-running "empty trash securely by default"
-sudo defaults write com.apple.finder EmptyTrashSecurely -bool true
-ok
-
-running "change minimize/maximize window effect to scale"
-sudo defaults write com.apple.dock mineffect -string "scale"
-ok
-
-running "minimize windows into their application’s icon"
-sudo defaults write com.apple.dock minimize-to-application -bool true
-ok
-
-running "show indicator lights for open applications in the Dock"
-sudo defaults write com.apple.dock show-process-indicators -bool true
-ok
-
-running "speed up Mission Control animations"
-sudo defaults write com.apple.dock expose-animation-duration -float 0.1
-ok
-
-running "automatically hide and show the Dock"
-sudo defaults write com.apple.dock autohide -bool true
-ok
-
-# Possible values:
-#  0: no-op
-#  2: Mission Control
-#  3: Show application windows
-#  4: Desktop
-#  5: Start screen saver
-#  6: Disable screen saver
-#  7: Dashboard
-# 10: Put display to sleep
-# 11: Launchpad
-# 12: Notification Center
-# 13: Lock Screen
-
-running "top left screen corner → lock screen"
-sudo defaults write com.apple.dock wvous-tl-corner -int 13
-sudo defaults write com.apple.dock wvous-tl-modifier -int 0
-ok
-
-running "copy email addresses as 'foo@example.com' instead of 'Foo Bar <foo@example.com>' in mail.app"
-defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
-ok
-
-running "add the keyboard shortcut ⌘ + Enter to send an email in mail.app"
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
-ok
-
-# Possible values:
-# 1: Very often (1 sec)
-# 2: Often (2 sec)
-# 5: Normally (5 sec)
-
-running "update refresh frequency in activity monitor"
-sudo defaults write com.apple.ActivityMonitor UpdatePeriod -int 2
-ok
-
 running "update and cleanup homebrew"
 brew update &> /dev/null
 brew upgrade &> /dev/null
 brew cleanup &> /dev/null
 ok
-
-bot "All done!"
 
 bot "Note that some of these changes require a logout/restart to take effect."
 
@@ -414,4 +230,8 @@ echo -n "Would you like to reboot your system? [y|n]: "
 read -r response
 if [[ $response =~ ^(y|yes|Y) ]]; then
   reboot
+else
+  bot "All done"
+  open /Applications/WezTerm.app
+  exit
 fi
