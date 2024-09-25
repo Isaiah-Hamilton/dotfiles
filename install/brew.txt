@@ -3,6 +3,7 @@ bottom
 eza
 fastfetch
 ffmpeg
+gh
 go
 gum
 lazygit
