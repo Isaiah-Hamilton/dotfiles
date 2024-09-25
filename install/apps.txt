@@ -1,7 +1,11 @@
-1password
 alt-tab
 arc
 bartender
+betterdisplay
+cleanshot
+displaperture
+firefox
+google-chrome
 iina
 mediamate
 middleclick
