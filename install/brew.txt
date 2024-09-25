@@ -4,6 +4,7 @@ eza
 fastfetch
 ffmpeg
 gh
+git
 go
 gum
 lazygit
