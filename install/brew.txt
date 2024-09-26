@@ -3,6 +3,7 @@ bottom
 eza
 fastfetch
 ffmpeg
+fish
 gh
 git
 go
