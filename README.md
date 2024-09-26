@@ -14,11 +14,8 @@ Here are some details about my setup:
 
 If you're installing on a fresh install of macOS, use the included install script for a quick and clean install.
 
-### Git
+Make sure that you are in the `~/` directory. you can do so by opening a new terminal or use `cd`.
 
 ```bash
-git clone https://github.com/isaiah-hamilton/dotfiles.git
-cd dotfiles
-chmod +x install.sh
-./install.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Isaiah-Hamilton/dotfiles/refs/heads/main/install.sh)"
 ```
