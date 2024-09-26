@@ -73,6 +73,11 @@ else
   ok
 fi
 
+# Install Dotfiles
+running "installing dotfiles"
+git clone https://github.com/isaiah-hamilton/dotfiles.git &> /dev/null
+ok
+
 # Install homebrew
 running "checking homebrew"
 brew_bin=$(which brew) 2>&1 > /dev/null
@@ -108,7 +113,7 @@ echo -n "would you like to install packages with brew? [y|n]: "
 read -r response
 if [[ $response =~ (y|yes|Y) ]]; then
   brew install gum &> /dev/null
-  packages=($(cat ./install/brew.txt |gum choose --no-limit --header="Packages:"))
+  packages=($(cat ~/dotfiles/install/brew.txt |gum choose --no-limit --header="Packages:"))
 
   for package in "${packages[@]}"; do
     running "brew install $package"
@@ -136,7 +141,7 @@ echo -n "install apps? [y|n]: "
 read -r response
 if [[ $response =~ (y|yes|Y) ]]; then
   brew install gum &> /dev/null
-  apps=($(cat ./install/apps.txt |gum choose --no-limit --header="Apps:"))
+  apps=($(cat ~/dotfiles/install/apps.txt |gum choose --no-limit --header="Apps:"))
 
   for app in "${apps[@]}"; do
     running "brew install --cask $app"
@@ -164,7 +169,7 @@ echo -n "install fonts? [y|n]: "
 read -r response
 if [[ $response =~ (y|yes|Y) ]]; then
   brew install gum &> /dev/null
-  fonts=($(cat ./install/fonts.txt |gum choose --no-limit --header="Fonts:"))
+  fonts=($(cat ~/dotfiles/install/fonts.txt |gum choose --no-limit --header="Fonts:"))
 
   for font in "${fonts[@]}"; do
     running "brew install --cask $font"
@@ -207,16 +212,11 @@ if [[ $response =~ (y|yes|Y) ]]; then
   ok
 fi
 
-# OS Configuration
-
-bot "OS configuration"
-echo -n "do you want to update the system configurations? [y|n]: "
-read -r response
-if [[ -z $response || $response =~ ^(n|no|N) ]]; then
-  open /Applications/WezTerm.app
-  bot "All done"
-  exit
-fi
+# Setup Fish shell
+running "set fish shell as default shell"
+which fish | sudo tee -a /etc/shells
+chsh -s "$(which fish)"
+ok
 
 running "update and cleanup homebrew"
 brew update &> /dev/null
