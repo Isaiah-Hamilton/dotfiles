@@ -25,6 +25,9 @@ alias lg lazygit
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
+# air
+alias air "~/go/bin/air"
+
 # Run fastfetch on new shell
 fastfetch
 
